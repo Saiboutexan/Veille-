@@ -134,8 +134,25 @@ def jolie_date(iso):
 
 
 # --------------------------------------------------------------- Banque mondiale
+def concerne_guinee(a):
+    """Vrai si l'avis porte sur la Guinee (Conakry), pas sur un homonyme."""
+    pays = a.get("project_ctry_name") or ""
+    if pays in ("Guinea-Bissau", "Equatorial Guinea", "Papua New Guinea"):
+        return False
+    if pays == "Guinea":
+        return True
+    contexte = " ".join([nettoie(a.get("bid_description")),
+                         nettoie(a.get("project_name")),
+                         nettoie(a.get("contact_address"))])
+    return bool(re.search(r"\bguin[ée]e?\b", sans_accent(contexte)))
+
+
 def banque_mondiale(pages=PAGES):
-    """Recupere les avis recents et garde ceux qui concernent la Guinee."""
+    """Recupere les avis recents et garde ceux qui concernent la Guinee.
+
+    Le tri se fait page par page : on ne garde jamais les 1000 avis d'une page
+    en memoire, seulement la poignee qui concerne la Guinee.
+    """
     avis = []
     for page in range(pages):
         url = ("%s?format=json&rows=1000&os=%d&srt=noticedate&order=desc"
@@ -145,7 +162,8 @@ def banque_mondiale(pages=PAGES):
         lot = r.json().get("procnotices", [])
         if not lot:
             break
-        avis += lot
+        avis += [a for a in lot if concerne_guinee(a)]
+        del lot
 
     retenus = []
     for a in avis:
@@ -154,12 +172,6 @@ def banque_mondiale(pages=PAGES):
         libelle = nettoie(a.get("bid_description")) or nettoie(a.get("project_name"))
         contexte = " ".join([pays, libelle, nettoie(a.get("contact_address")),
                              nettoie(a.get("project_name"))])
-        # Guinee comme pays du projet, ou Guinee citee dans un avis regional
-        if pays != "Guinea" and not re.search(r"\bguin[ée]e?\b", sans_accent(contexte)):
-            continue
-        if pays in ("Guinea-Bissau", "Equatorial Guinea", "Papua New Guinea"):
-            continue
-
         type_avis = a.get("notice_type") or "avis"
         if any(x in type_avis.lower() for x in TYPES_EXCLUS):
             continue                                  # marche deja attribue

@@ -1,18 +1,21 @@
 # Veille CNOSCG — rapport d'actualités et d'appels d'offres
 
-Petit outil qui produit chaque jour **un rapport texte** sur la Guinée :
+Outil qui produit chaque jour **un rapport texte** sur la Guinée :
 
 1. **Actualités du jour** — titre, information résumée, source
 2. **Appels d'offres** — domaine, zone, critères, budget, date limite, lien
 
-Aucun serveur, aucune interface : un fichier `.txt` que l'on lit, imprime,
-copie dans un mail ou envoie sur WhatsApp.
+Le rapport est un fichier `.txt` que l'on lit, imprime, copie dans un mail ou
+envoie sur WhatsApp. Il s'obtient de deux façons : en ligne de commande, ou
+depuis l'application web.
 
 ---
 
 ## Lancer
 
-Double-cliquez sur **`lancer.bat`**, ou en ligne de commande :
+### En ligne de commande
+
+Double-cliquez sur **`lancer.bat`**, ou :
 
 ```bash
 python veille.py
@@ -20,6 +23,17 @@ python veille.py
 
 Cela enchaîne les trois étapes et écrit le rapport dans
 `rapports/rapport_AAAA-MM-JJ.txt`.
+
+### Application web
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+L'application affiche le rapport, permet de régler la période et le domaine,
+de relancer la collecte et de télécharger le `.txt`. Elle ne fait pas de
+tableau de bord : elle sert le même rapport texte.
 
 Chaque étape peut aussi se lancer seule :
 
@@ -104,22 +118,42 @@ au nom du CNOSCG pour élargir la couverture ONG.
 
 ---
 
+## Déploiement sur Streamlit Community Cloud
+
+1. Aller sur **https://share.streamlit.io** et se connecter avec GitHub.
+2. *Create app* → *Deploy a public app from GitHub*.
+3. Renseigner :
+   - **Repository** : `Saiboutexan/Veille-`
+   - **Branch** : `main`
+   - **Main file path** : `app.py`
+4. *Deploy*. La première ouverture constitue la base (environ une minute).
+
+**À savoir sur l'hébergement gratuit :** le disque est réinitialisé à chaque
+redémarrage de l'application. La base `veille.db` n'est donc pas conservée —
+c'est voulu : l'application la reconstruit automatiquement à la première
+ouverture, et le bouton « Actualiser la collecte » la met à jour. L'historique
+long terme se conserve en local, en lançant `python veille.py` sur un poste.
+
+---
+
 ## Fichiers
 
 ```
 veille/
-├── veille.py      tout-en-un (collecte + offres + rapport)
-├── lancer.bat     double-clic sous Windows
-├── sources.py     LE fichier à adapter : sources, thèmes, domaines, lieux
-├── collecte.py    actualités  -> veille.db
-├── offres.py      appels d'offres -> veille.db
-├── rapport.py     génère le rapport texte
-├── veille.db      base SQLite (créée automatiquement)
-└── rapports/      les rapports produits, un par jour
+├── app.py            application web (Streamlit)
+├── veille.py         tout-en-un (collecte + offres + rapport)
+├── lancer.bat        double-clic sous Windows
+├── sources.py        LE fichier à adapter : sources, thèmes, domaines, lieux
+├── collecte.py       actualités  -> veille.db
+├── offres.py         appels d'offres -> veille.db
+├── rapport.py        génère le rapport texte
+├── requirements.txt  dépendances pour le déploiement
+├── veille.db         base SQLite (créée automatiquement, non versionnée)
+└── rapports/         les rapports produits, un par jour (non versionnés)
 ```
 
-Dépendances : `requests` uniquement (le reste est dans la bibliothèque
-standard de Python).
+Dépendances : `requests` pour la collecte, `streamlit` pour l'application web.
+Le reste vient de la bibliothèque standard de Python.
 
 ---
 
