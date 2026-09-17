@@ -5,8 +5,9 @@ Application web : collecte, consulte et telecharge la veille du CNOSCG.
 Local  :  streamlit run app.py
 En ligne : https://share.streamlit.io  (depot Saiboutexan/Veille-)
 
-Trois onglets : les appels d'offres, les actualites, le carnet des guichets.
-Le rapport texte et le classeur Excel se telechargent depuis la barre laterale.
+Quatre onglets : les appels d'offres, les actualites, le carnet des guichets
+et le rapport texte. Le rapport et le classeur Excel se telechargent depuis
+la barre laterale, qui commande aussi ce que l'on collecte.
 """
 import io
 import os
