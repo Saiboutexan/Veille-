@@ -1,0 +1,16 @@
+# Base de données locale (recréée par python collecte.py)
+veille.db
+*.db-journal
+
+# Rapports produits par l'outil
+rapports/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Système
+Thumbs.db
+.DS_Store
