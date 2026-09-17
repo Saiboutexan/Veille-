@@ -138,15 +138,15 @@ def collecter():
     total_nouveaux, en_panne = 0, []
 
     print("Collecte du %s\n" % maintenant)
-    print("%-18s %8s %9s   %s" % ("SOURCE", "LUS", "NOUVEAUX", "ETAT"))
-    print("-" * 58)
+    print("%-24s %6s %9s   %s" % ("SOURCE", "LUS", "NOUVEAUX", "ETAT"))
+    print("-" * 62)
 
     for src in SOURCES:
         try:
             entrees = lire_flux(src["flux"])
         except Exception as e:
             en_panne.append(src["nom"])
-            print("%-18s %8s %9s   %s" % (src["nom"], "-", "-", str(e)[:22]))
+            print("%-24s %6s %9s   %s" % (src["nom"], "-", "-", str(e)[:22]))
             continue
 
         nouveaux = 0
@@ -165,10 +165,10 @@ def collecter():
             nouveaux += cur.rowcount
         cx.commit()
         total_nouveaux += nouveaux
-        print("%-18s %8d %9d   ok" % (src["nom"], len(entrees), nouveaux))
+        print("%-24s %6d %9d   ok" % (src["nom"], len(entrees), nouveaux))
 
     total = cx.execute("SELECT COUNT(*) FROM articles").fetchone()[0]
-    print("-" * 58)
+    print("-" * 62)
     print("%d nouveaux articles  |  %d en base" % (total_nouveaux, total))
     if en_panne:
         print("Sources injoignables : " + ", ".join(en_panne))

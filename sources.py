@@ -14,22 +14,82 @@ C'est le SEUL fichier a modifier pour adapter la veille :
 #    (voir la grille A-D du module 3 de la formation)
 # ---------------------------------------------------------------------------
 SOURCES = [
-    {"nom": "Guinéenews",       "flux": "https://guineenews.org/feed/",            "fiabilite": "A"},
-    {"nom": "Africaguinée",     "flux": "https://www.africaguinee.com/feed/",      "fiabilite": "A"},
-    {"nom": "Mediaguinée",      "flux": "https://mediaguinee.com/feed/",           "fiabilite": "B"},
-    {"nom": "Guineematin",      "flux": "https://guineematin.com/feed/",           "fiabilite": "A"},
-    {"nom": "VisionGuinée",     "flux": "https://www.visionguinee.info/feed/",     "fiabilite": "B"},
-    {"nom": "Guinée360",        "flux": "https://www.guinee360.com/feed/",         "fiabilite": "B"},
-    {"nom": "Mosaïqueguinée",   "flux": "https://mosaiqueguinee.com/feed/",        "fiabilite": "B"},
-    {"nom": "Guinée7",          "flux": "https://www.guinee7.com/feed/",           "fiabilite": "B"},
-    {"nom": "Guinée114",        "flux": "https://www.guinee114.com/feed/",         "fiabilite": "B"},
-    {"nom": "Kalenews",         "flux": "https://kalenews.org/feed/",              "fiabilite": "B"},
-    {"nom": "Le Renifleur 224", "flux": "https://www.lerenifleur224.com/feed/",    "fiabilite": "B"},
-    {"nom": "Avenir Guinée",    "flux": "https://www.avenirguinee.org/feed/",      "fiabilite": "B"},
-    {"nom": "Investigator",     "flux": "https://investigatorguinee.com/feed/",    "fiabilite": "B"},
-    {"nom": "Guinée Live",      "flux": "https://guineelive.com/feed/",            "fiabilite": "B"},
-    {"nom": "Conakry Infos",    "flux": "https://conakryinfos.com/feed/",          "fiabilite": "B"},
+    # --- agence de presse nationale -----------------------------------------
+    {"nom": "AGP",                   "fiabilite": "A", "categorie": "Agence de presse",
+     "flux": "https://agpguinee.com/feed/"},
+
+    # --- generalistes de reference ------------------------------------------
+    {"nom": "Guinéenews",            "fiabilite": "A", "categorie": "Actualités générales",
+     "flux": "https://guineenews.org/feed/"},
+    {"nom": "Africaguinée",          "fiabilite": "A", "categorie": "Actualités générales",
+     "flux": "https://www.africaguinee.com/feed/"},
+    {"nom": "Guineematin",           "fiabilite": "A", "categorie": "Actualités générales",
+     "flux": "https://guineematin.com/feed/"},
+
+    # --- radio / television --------------------------------------------------
+    {"nom": "Espace FM",             "fiabilite": "A", "categorie": "Radio / TV",
+     "flux": "https://espacefmguinee.info/feed/"},
+
+    # --- generalistes --------------------------------------------------------
+    {"nom": "Mediaguinée",           "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://mediaguinee.com/feed/"},
+    {"nom": "VisionGuinée",          "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://www.visionguinee.info/feed/"},
+    {"nom": "Guinée360",             "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://www.guinee360.com/feed/"},
+    {"nom": "Guinée7",               "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://www.guinee7.com/feed/"},
+    {"nom": "Guinée114",             "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://www.guinee114.com/feed/"},
+    {"nom": "Mosaïqueguinée",        "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://mosaiqueguinee.com/feed/"},
+    {"nom": "Laguinee.info",         "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://laguinee.info/feed/"},
+    {"nom": "Le Courrier de Conakry", "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://lecourrierdeconakry.com/feed/"},
+    {"nom": "Avenir Guinée",         "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://www.avenirguinee.org/feed/"},
+    {"nom": "Le Révélateur 224",     "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://lerevelateur224.com/feed/"},
+    {"nom": "Kalenews",              "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://kalenews.org/feed/"},
+    {"nom": "Guinée Lumière",        "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://guineelumiere.com/feed/"},
+    {"nom": "ActuConakry",           "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://actuconakry.com/feed/"},
+    {"nom": "GuinéeTime",            "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://guineetime.com/feed/"},
+    {"nom": "GuinéeDirect",          "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://guineedirect.org/feed/"},
+    {"nom": "Focus Guinée",          "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://focusguinee.info/feed/"},
+    {"nom": "Conakrylemag",          "fiabilite": "B", "categorie": "Actualités / société",
+     "flux": "https://conakrylemag.com/feed/"},
+    {"nom": "Le Renifleur 224",      "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://www.lerenifleur224.com/feed/"},
+    {"nom": "Investigator",          "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://investigatorguinee.com/feed/"},
+    {"nom": "Guinée Live",           "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://guineelive.com/feed/"},
+    {"nom": "Conakry Infos",         "fiabilite": "B", "categorie": "Actualités générales",
+     "flux": "https://conakryinfos.com/feed/"},
+
+    # --- specialises ---------------------------------------------------------
+    {"nom": "Guinée Mines Nature",   "fiabilite": "B", "categorie": "Mines / environnement",
+     "flux": "https://guineeminesnature.com/feed/"},
+    {"nom": "Gnakrylive",            "fiabilite": "B", "categorie": "Culture / événements",
+     "flux": "https://gnakrylive.com/?format=feed&type=rss"},
 ]
+
+# Medias guineens SANS flux RSS exploitable (testes le 17/09/2026).
+# A surveiller a la main, ou a rebrancher si un flux apparait :
+#   Le Djely (403), Inquisiteur, Sitanews, Generation224, Agriguinee,
+#   GuineePlus, Conakrylive, Hadafo Medias  -> pas de flux
+#   Oeil224, Guinee Eco, GuineeInfos, RTG, Djoma Media, CIS Medias,
+#   Gangan RTV, FIM FM                      -> site injoignable au test
+# Sans site web dans la liste de depart : Guinee Actuelle, Sabari FM,
+#   Radio Kankan, Le Lynx, Le Populaire, Le Diplomate, L'Independant,
+#   Horoya, Emergence Magazine, Objectif 224, Le Factuel de Guinee.
 
 # ---------------------------------------------------------------------------
 # 2. LA GRILLE DE CODAGE : les 5 domaines du tableau de bord CNOSCG

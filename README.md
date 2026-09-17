@@ -57,14 +57,24 @@ python rapport.py --expires                  # inclure les avis déjà clos
 
 ## Ce que ça collecte
 
-**Actualités — 15 médias guinéens** (flux RSS) : Guinéenews, Africaguinée,
-Mediaguinée, Guineematin, VisionGuinée, Guinée360, Mosaïqueguinée, Guinée7,
-Guinée114, Kalenews, Le Renifleur 224, Avenir Guinée, Investigator,
-Guinée Live, Conakry Infos.
+**Actualités — 28 médias guinéens** dont les flux ont été testés un par un :
+
+| Catégorie | Médias |
+|---|---|
+| Agence de presse | AGP |
+| Généralistes de référence | Guinéenews, Africaguinée, Guineematin |
+| Radio / TV | Espace FM |
+| Généralistes | Mediaguinée, VisionGuinée, Guinée360, Guinée7, Guinée114, Mosaïqueguinée, Laguinee.info, Le Courrier de Conakry, Avenir Guinée, Le Révélateur 224, Kalenews, Guinée Lumière, ActuConakry, GuinéeTime, GuinéeDirect, Focus Guinée, Conakrylemag, Le Renifleur 224, Investigator, Guinée Live, Conakry Infos |
+| Spécialisés | Guinée Mines Nature, Gnakrylive |
 
 Chaque article est rangé dans un **domaine de suivi** : Espace civique,
 Gouvernance et ressources, Cohésion sociale, Services publics, VBG, Électoral.
 Les sources sont notées **A** (utilisable seule) ou **B** (à recouper).
+
+Une vingtaine d'autres médias guinéens n'exposent **pas** de flux RSS
+exploitable (Le Djely, RTG, Djoma Média, FIM FM, Le Lynx, Horoya…). Ils sont
+listés en commentaire à la fin de `sources.py` : ils restent à surveiller
+manuellement, et se rebranchent en une ligne si un flux apparaît.
 
 **Appels d'offres — deux origines :**
 
