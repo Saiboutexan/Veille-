@@ -323,7 +323,7 @@ def construire(jours=1, theme=None, maxi=5, tout=False, expires=False,
                                        "%d guichet(s)" % n))
 
     tete = titre_encadre([
-        "CONSEIL NATIONAL DES ORGANISATIONS DE LA SOCIÉTÉ CIVILE GUINÉENNE",
+        "OBSERVATOIRE DE L'ACTUALITÉ GUINÉENNE",
         "RAPPORT DE VEILLE",
         date_longue(maintenant).upper(),
     ])
@@ -349,7 +349,7 @@ def construire(jours=1, theme=None, maxi=5, tout=False, expires=False,
         trait("="),
         "  · Fiabilité A : source utilisable seule. Fiabilité B : à recouper.",
         "    Le repère [A] ou [B] figure en bout de titre de chaque article.",
-        "  · Rien ne sort du CNOSCG en B ou moins sans deux sources indépendantes,",
+        "  · Rien n'est diffusé en B ou moins sans deux sources indépendantes,",
         "    c'est-à-dire deux sources qui ne se citent pas l'une l'autre.",
         "  · Vérifier la source, le contenu et le contexte (règle des 3 V) avant",
         "    toute diffusion publique.",
@@ -363,7 +363,8 @@ def construire(jours=1, theme=None, maxi=5, tout=False, expires=False,
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Rapport de veille CNOSCG")
+    ap = argparse.ArgumentParser(
+        description="Rapport de veille — Observatoire de l'actualité guinéenne")
     ap.add_argument("--jours", type=int, default=1,
                     help="période des actualités (défaut : 1)")
     ap.add_argument("--theme", default=None, help="limiter à un domaine de suivi")

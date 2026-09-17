@@ -29,7 +29,7 @@ ICI = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(ICI, "veille.db")
 URGENT = 15                       # en deca, une echeance est "proche"
 
-# couleurs : le vert du CNOSCG pour les en-tetes, un feu tricolore discret
+# couleurs : un vert sobre pour les en-tetes, un feu tricolore discret
 # pour les echeances
 VERT = "0B4F3A"
 BLANC = "FFFFFF"
@@ -198,8 +198,8 @@ def classeur(jours=1):
     }
     cx.close()
 
-    wb.properties.title = "Veille CNOSCG"
-    wb.properties.creator = "Veille CNOSCG"
+    wb.properties.title = "Observatoire de l'actualité guinéenne"
+    wb.properties.creator = "Observatoire de l'actualité guinéenne"
     return wb, comptes
 
 
@@ -222,7 +222,8 @@ def octets(jours=1):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Export Excel de la veille CNOSCG")
+    ap = argparse.ArgumentParser(
+        description="Export Excel — Observatoire de l'actualité guinéenne")
     ap.add_argument("--jours", type=int, default=1,
                     help="période des actualités exportées (défaut : 1)")
     ap.add_argument("--fichier", default=None, help="chemin du classeur à écrire")

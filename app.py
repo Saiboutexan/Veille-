@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Application web : collecte, consulte et telecharge la veille du CNOSCG.
+Application web : collecte, consulte et telecharge la veille.
 
 Local  :  streamlit run app.py
 En ligne : https://share.streamlit.io  (depot Saiboutexan/Veille-)
@@ -27,7 +27,8 @@ from sources import BAILLEURS, est_releve
 ICI = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(ICI, "veille.db")
 
-st.set_page_config(page_title="Veille CNOSCG", page_icon="📰", layout="wide")
+st.set_page_config(page_title="Observatoire de l'actualité guinéenne",
+                   page_icon="📰", layout="wide")
 
 VERT = "#0b4f3a"
 
@@ -136,9 +137,9 @@ def echappe(txt):
 
 # ------------------------------------------------------------------ en-tete
 st.markdown(
-    '<div class="bandeau"><h1>Veille CNOSCG</h1><p>Conseil National des '
-    'Organisations de la Société Civile Guinéenne — actualités guinéennes, '
-    "appels d'offres et opportunités de financement</p></div>",
+    '<div class="bandeau"><h1>Observatoire de l\'actualité guinéenne</h1>'
+    "<p>Actualités des médias guinéens, appels d'offres et opportunités de "
+    'financement ouvertes aux organisations de la société civile</p></div>',
     unsafe_allow_html=True)
 
 n_art, n_off, derniere = compter()

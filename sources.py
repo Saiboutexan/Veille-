@@ -92,7 +92,7 @@ SOURCES = [
 #   Horoya, Emergence Magazine, Objectif 224, Le Factuel de Guinee.
 
 # ---------------------------------------------------------------------------
-# 2. LA GRILLE DE CODAGE : les 5 domaines du tableau de bord CNOSCG
+# 2. LA GRILLE DE CODAGE : les domaines de suivi du tableau de bord
 #    Un article est range dans le premier theme dont un mot-cle apparait.
 #    Les mots sont cherches sans accent, en minuscules, et en MOT ENTIER
 #    ("mine" ne declenche pas sur "elimine"). Ecrire simple.

@@ -38,7 +38,8 @@ def etape(numero, total, titre):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Veille CNOSCG")
+    ap = argparse.ArgumentParser(
+        description="Observatoire de l'actualité guinéenne")
     ap.add_argument("--actualites", action="store_true",
                     help="collecter les actualités seules")
     ap.add_argument("--offres", action="store_true",

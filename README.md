@@ -1,4 +1,7 @@
-# Veille CNOSCG — actualités, appels d'offres et opportunités de financement
+# Observatoire de l'actualité guinéenne
+
+Actualités des médias guinéens, appels d'offres et opportunités de
+financement ouvertes aux organisations de la société civile.
 
 Outil qui produit chaque jour, sur la Guinée :
 
@@ -193,7 +196,8 @@ sur le modèle de la fonction `banque_mondiale()`.
 
 **ReliefWeb** : l'API v1 a été fermée, et la v2 refuse les requêtes sans compte
 approuvé (`appname` enregistré). **UNGM** et **Devex** exigent eux aussi un
-compte. À demander au nom du CNOSCG pour élargir la couverture ONG — d'ici là,
+compte. À demander au nom de l'organisation qui exploite l'outil, pour élargir
+la couverture ONG — d'ici là,
 les trois restent dans le carnet, à consulter à la main.
 
 ---
@@ -244,7 +248,7 @@ Dépendances : `requests` pour la collecte, `streamlit` pour l'application web,
 Le rapport rappelle en pied de page les règles du module de formation :
 
 - fiabilité **A** = utilisable seule, **B** = à recouper ;
-- rien ne sort du CNOSCG en B ou moins **sans deux sources indépendantes**,
+- rien n'est diffusé en B ou moins **sans deux sources indépendantes**,
   c'est-à-dire deux sources qui ne se citent pas l'une l'autre ;
 - vérifier **la source, le contenu et le contexte** (règle des 3 V) avant
   toute diffusion publique.
