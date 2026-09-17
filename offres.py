@@ -8,6 +8,7 @@ Deux origines :
 
 Usage :  python offres.py
 """
+import hashlib
 import html
 import os
 import re
@@ -49,8 +50,22 @@ def base_offres():
     colonnes = [c[1] for c in cx.execute("PRAGMA table_info(offres)")]
     if "limite_iso" not in colonnes:
         cx.execute("ALTER TABLE offres ADD COLUMN limite_iso TEXT")
+
+    # v2 : les identifiants venaient de hash(), qui change a chaque execution
+    # de Python. Le meme avis revenait donc en double a chaque collecte. On
+    # purge une seule fois les lignes portant ces anciens identifiants : la
+    # collecte suivante les recree avec un identifiant stable.
+    if cx.execute("PRAGMA user_version").fetchone()[0] < 2:
+        cx.execute("DELETE FROM offres WHERE id LIKE 'PRESSE-%' OR id LIKE 'BAILLEUR-%'")
+        cx.execute("PRAGMA user_version = 2")
     cx.commit()
     return cx
+
+
+def identifiant(prefixe, lien):
+    """Identifiant stable d'un avis : la meme adresse donne toujours le meme
+    identifiant, donc jamais de doublon d'une collecte a l'autre."""
+    return "%s-%s" % (prefixe, hashlib.md5(lien.encode("utf-8")).hexdigest()[:16])
 
 
 # --------------------------------------------------------------- extraction
@@ -206,7 +221,7 @@ def presse(cx):
             continue
         corps = titre + ". " + (resume or "")
         retenus.append({
-            "id": "PRESSE-" + str(abs(hash(lien))),
+            "id": identifiant("PRESSE", lien),
             "origine": "Presse guinéenne — %s" % source,
             "titre": titre,
             "domaine": domaine_de(corps),
